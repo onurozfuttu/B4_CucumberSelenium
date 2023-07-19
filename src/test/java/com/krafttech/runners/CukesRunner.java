@@ -7,7 +7,9 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features = "src/test/resources/features",
-        glue = "com/krafttech/stepDefinitions"
+        glue = "com/krafttech/stepDefinitions",
+        dryRun = false,
+        tags = "@regression"
 )
 public class CukesRunner {
 
