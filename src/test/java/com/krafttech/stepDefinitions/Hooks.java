@@ -1,17 +1,29 @@
 package com.krafttech.stepDefinitions;
 
+import com.krafttech.utilities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
+import java.util.concurrent.TimeUnit;
 
 public class Hooks {
-    @Before
+    @Before(order = 0)
     public void setUp(){
-        System.out.println("This is coming from before method");
+        Driver.get().manage().window().maximize();
+        Driver.get().manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
     }
 
-    @After
-    public void tearDown(){
-        System.out.println("This is coming from after method");
+    @After(order = 0)
+    public void tearDown(Scenario scenario){
+        if(scenario.isFailed()){
+            final byte[] screenshot = ((TakesScreenshot) Driver.get()).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot,"image/png","screenshot");
+        }
+
+        Driver.closeDriver();
     }
 
     @Before(order = 1, value = "@database")

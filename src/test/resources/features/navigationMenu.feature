@@ -1,4 +1,5 @@
 @regression
+@navigation
 Feature: Navigation Menu Test
 
   #Create a new file navigationMenu.feature
@@ -31,19 +32,19 @@ Feature: Navigation Menu Test
     When Go to developers menu
     Then Verify that 'Developers' text is visible
 
-    @sebastian
-    Scenario: Navigation to Forms/Input Menu
-      Given The user is on the login page
-      When Login as Sebastian
-      Then Validate that Dashboard text is visible
-      When Go to Forms-Input menu
-      Then Validate that General Form Elements - Input text is visible
+  @sebastian
+  Scenario: Navigation to Forms/Input Menu
+    Given The user is on the login page
+    When Login as Sebastian
+    Then Validate that Dashboard text is visible
+    When Go to Forms-Input menu
+    Then Validate that General Form Elements - Input text is visible
 
-      @john
-      Scenario: Navigation to My Profile Menu
-        Given The user is on the login page
-        When Login as John
-        Then Validate that Dashboard text is visible
-        When Go to My Profile menu
-        Then Validate that User Profile text is visible
+  @john
+  Scenario: Navigation to My Profile Menu
+    Given The user is on the login page
+    When Login as John
+    Then Validate that Dashboard text is visible
+    When Go to My Profile menu
+    Then Validate that User Profile text is visible
 
